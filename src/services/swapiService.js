@@ -12,35 +12,35 @@ export default class swapiServises {
 		return body;
 	}
 
-	async getAllPeople() {
+	getAllPeople = async () => {
 		const response = await this.getResourse('/people/');
 		return response.results.map(this._transformPerson);
-	}
+	};
 
-	async getPersonById(id) {
+	getPersonById = async id => {
 		const response = await this.getResourse(`/people/${id}`);
 		return this._transformPerson(response);
-	}
+	};
 
-	async getAllStarships() {
+	getAllStarships = async () => {
 		const response = await this.getResourse('/starships/');
 		return response.results.map(this._transformStarship);
-	}
+	};
 
-	async getStarshipById(id) {
+	getStarshipById = async id => {
 		const response = await this.getResourse(`/starships/${id}`);
 		return this._transformStarship(response);
-	}
+	};
 
-	async getAllPlanets() {
+	getAllPlanets = async () => {
 		const response = await this.getResourse('/planets/');
 		return response.results.map(this._transformPlanet);
-	}
+	};
 
-	async getPlanetById(id) {
+	getPlanetById = async id => {
 		const response = await this.getResourse(`/planets/${id}`);
 		return this._transformPlanet(response);
-	}
+	};
 
 	_extractId(url) {
 		// https://regex101.com/
@@ -56,7 +56,7 @@ export default class swapiServises {
 			name: planet.name,
 			rotationPeriod: planet.rotation_period,
 		};
-	}
+	};
 
 	_transformStarship = starship => {
 		return {
@@ -70,7 +70,7 @@ export default class swapiServises {
 			passengers: starship.passengers,
 			cargoCapacity: starship.cargoCapacity,
 		};
-	}
+	};
 
 	_transformPerson = person => {
 		return {
@@ -80,5 +80,5 @@ export default class swapiServises {
 			birthYear: person.birth_year,
 			eyeColor: person.eye_color,
 		};
-	}
+	};
 }
