@@ -3,9 +3,12 @@ import ItemList from '../ItemList';
 import PersonDetails from '../PersonDetails';
 import ErrorButton from '../ErrorButton';
 import ErrorIndicator from '../ErrorIndicator';
+import swapiService from '../../services/swapiService';
 import './PeoplePage.css';
 
 export default class PeoplePage extends Component {
+  swapi = new swapiService();
+
 	state = {
 		selectedPerson: 5,
 		hasError: false,
