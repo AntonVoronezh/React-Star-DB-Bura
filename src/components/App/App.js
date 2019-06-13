@@ -48,9 +48,13 @@ export default class App extends Component {
 				<ErrorButton />
 				<PeoplePage />
 
-				{/* <div className="row mb2">
+				<div className="row mb2">
 					<div className="col-md-6">
-						<ItemList onItemSelected={this.onPersonSelected} getData={this.swapi.getAllPlanets} />
+						<ItemList
+							onItemSelected={this.onPersonSelected}
+							getData={this.swapi.getAllPlanets}
+							renderItem={({ name, birthYear }) => `${name} (${birthYear})`}
+						/>
 					</div>
 					<div className="col-md-6">
 						<PersonDetails personId={this.state.selectedPerson} />
@@ -60,13 +64,17 @@ export default class App extends Component {
 
 				<div className="row mb2">
 					<div className="col-md-6">
-						<ItemList onItemSelected={this.onPersonSelected} getData={this.swapi.getAllStarships} />
+						<ItemList
+							onItemSelected={this.onPersonSelected}
+							getData={this.swapi.getAllStarships}
+							renderItem={({ name, birthYear }) => `${name} (${birthYear})`}
+						/>
 					</div>
 					<div className="col-md-6">
 						<PersonDetails personId={this.state.selectedPerson} />
 						<ErrorButton />
 					</div>
-				</div> */}
+				</div>
 			</div>
 		);
 	}
