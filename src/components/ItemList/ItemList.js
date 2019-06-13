@@ -7,12 +7,12 @@ export default class ItemList extends Component {
 	swapi = new swapiService();
 
 	state = {
-		peopleList: null,
+		itemList: null,
 	};
 
 	componentDidMount() {
-		this.swapi.getAllPeople().then(peopleList => {
-			this.setState({ peopleList });
+		this.swapi.getAllPeople().then(itemList => {
+			this.setState({ itemList });
 		});
 	}
 
