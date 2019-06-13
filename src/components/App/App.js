@@ -46,14 +46,15 @@ export default class App extends Component {
 					Toggle Random Planet
 				</button>
 				<ErrorButton />
-				<div className="row mb2">
+				{/* <div className="row mb2">
 					<div className="col-md-6">
 						<ItemList onItemSelected={this.onPersonSelected} />
 					</div>
 					<div className="col-md-6">
 						<PersonDetails personId={this.state.selectedPerson} />
+						<ErrorButton />
 					</div>
-				</div>
+				</div> */}
 			</div>
 		);
 	}
