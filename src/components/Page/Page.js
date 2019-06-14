@@ -1,4 +1,4 @@
-import React, { Component } from './node_modules/react';
+import React, { Component } from 'react';
 import ItemList from '../ItemList';
 import ItemDetails from '../ItemDetails';
 import ErrorButton from '../ErrorButton';
@@ -16,13 +16,9 @@ export default class Page extends Component {
 	};
 
 	render() {
-		const itemList = (
-			<ItemList
-				onItemSelected={this.onPersonSelected}
-				getData={this.swapi.getAllPeople}
-				renderItem={({ name, birthYear }) => `${name} (${birthYear})`}
-			/>
-		);
+		const { getData, renderItem } = this.props;
+
+		const itemList = <ItemList onItemSelected={this.onPersonSelected} getData={getData} renderItem={renderItem} />;
 
 		const details = (
 			<React.Fragment>

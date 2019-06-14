@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import Header from '../Header';
 import RandomPlanet from '../RandomPlanet';
-import ItemList from '../ItemList';
-import PersonDetails from '../PersonDetails';
+import Page from '../Page';
 import ErrorButton from '../ErrorButton';
 import ErrorIndicator from '../ErrorIndicator';
-import PeoplePage from '../Page';
 import swapiService from '../../services/swapiService';
 
 import './App.css';
@@ -38,7 +36,7 @@ export default class App extends Component {
 
 		const planet = this.state.showRandomPlanet ? <RandomPlanet /> : null;
 
-		const {getAllPlanets, getAllStarships, getPersonImgUrl} = this.swapi;
+		const { getAllPeople, getAllPlanets, getAllStarships, getPersonImgUrl } = this.swapi;
 
 		return (
 			<div>
@@ -49,7 +47,7 @@ export default class App extends Component {
 				</button>
 				<ErrorButton />
 
-				<Page />
+				<Page getData={getAllPeople} renderItem={({ name, birthYear }) => `${name} (${birthYear})`} />
 
 				{/* <div className="row mb2">
 					<div className="col-md-6">
