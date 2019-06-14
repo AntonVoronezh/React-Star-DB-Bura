@@ -2,7 +2,7 @@ import React, { Component } from './node_modules/react';
 import ItemList from '../ItemList';
 import PersonDetails from '../PersonDetails';
 import ErrorButton from '../ErrorButton';
-import ErrorIndicator from '../ErrorIndicator';
+
 import Row from '../Row';
 import './PeoplePage.css';
 
@@ -40,21 +40,21 @@ export default class Page extends Component {
 	}
 }
 
-class ErrorBoundary extends Component {
-	state = {
-		hasError: false,
-	};
+// class ErrorBoundary extends Component {
+// 	state = {
+// 		hasError: false,
+// 	};
 
-	componentDidCatch(error, info) {
-		this.setState({ hasError: true });
-		// console.log('componentDidCatch', error, info);
-	}
+// 	componentDidCatch(error, info) {
+// 		this.setState({ hasError: true });
+// 		// console.log('componentDidCatch', error, info);
+// 	}
 
-	render() {
-		if (this.state.hasError) {
-			return <ErrorIndicator />;
-		}
+// 	render() {
+// 		if (this.state.hasError) {
+// 			return <ErrorIndicator />;
+// 		}
 
-		return this.props.children;
-	}
-}
+// 		return this.props.children;
+// 	}
+// }
