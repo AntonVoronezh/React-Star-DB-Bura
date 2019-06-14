@@ -1,13 +1,12 @@
 import React, { Component } from './node_modules/react';
 import ItemList from '../ItemList';
-import PersonDetails from '../PersonDetails';
+import ItemDetails from '../ItemDetails';
 import ErrorButton from '../ErrorButton';
-
+import ErrorBoundary from '../ErrorBoundary';
 import Row from '../Row';
 import './PeoplePage.css';
 
 export default class Page extends Component {
-
 	state = {
 		selectedPerson: 5,
 	};
@@ -25,36 +24,17 @@ export default class Page extends Component {
 			/>
 		);
 
-		const persDet = (
-			<>
-				<PersonDetails personId={this.state.selectedPerson} />
+		const details = (
+			<React.Fragment>
+				<ItemDetails personId={this.state.selectedPerson} />
 				<ErrorButton />
-			</>
+			</React.Fragment>
 		);
 
 		return (
 			<ErrorBoundary>
-				<Row left={itemList} right={persDet} />
+				<Row left={itemList} right={details} />
 			</ErrorBoundary>
 		);
 	}
 }
-
-// class ErrorBoundary extends Component {
-// 	state = {
-// 		hasError: false,
-// 	};
-
-// 	componentDidCatch(error, info) {
-// 		this.setState({ hasError: true });
-// 		// console.log('componentDidCatch', error, info);
-// 	}
-
-// 	render() {
-// 		if (this.state.hasError) {
-// 			return <ErrorIndicator />;
-// 		}
-
-// 		return this.props.children;
-// 	}
-// }
