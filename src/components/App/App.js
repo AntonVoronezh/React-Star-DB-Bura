@@ -54,6 +54,13 @@ export default class App extends Component {
 					renderItem={({ name, birthYear }) => `${name} (${birthYear})`}
 				/>
 
+				<Page
+					// id={this.state.selectedPerson}
+					getData={getAllPlanets}
+					getImg={getPlanetsImgUrl}
+					renderItem={({ name, birthYear }) => `${name} (${birthYear})`}
+				/>
+
 				{/* <div className="row mb2">
 					<div className="col-md-6">
 						<ItemList onItemSelected={this.onPersonSelected} getData={getAllPlanets}>

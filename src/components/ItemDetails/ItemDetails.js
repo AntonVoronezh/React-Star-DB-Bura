@@ -13,6 +13,16 @@ export default class ItemDetails extends React.Component {
 			this.setState({ imgUrl:url });
 		});
 	}
+
+	componentDidUpdate() {
+		const { getImg, id } = this.props;
+
+		getImg(id).then(({url}) => {
+			this.setState({ imgUrl:url });
+		});
+	}
+
+
 	render() {
 		const { name, gender, birthYear, eyeColor } = this.props;
 

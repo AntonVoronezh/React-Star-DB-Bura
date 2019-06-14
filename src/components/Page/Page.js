@@ -19,15 +19,19 @@ export default class Page extends Component {
 		const { getData, getImg, renderItem } = this.props;
 
 		const itemList = <ItemList onItemSelected={this.onItemSelected} getData={getData} renderItem={renderItem} />;
-
+console.log(this.state.id)
 		const details = (
+			
+			
 			<React.Fragment>
+				
 				<ItemDetails id={this.state.id} getImg={getImg} />
 				<ErrorButton />
 			</React.Fragment>
 		);
 
 		return (
+			
 			<ErrorBoundary>
 				<Row left={itemList} right={details} />
 			</ErrorBoundary>
