@@ -46,7 +46,7 @@ export default class App extends Component {
 			getStarshipImage,
 			getPersonById,
 			getStarshipById,
-			getPlanetById
+			getPlanetById,
 		} = this.swapi;
 
 		return (
@@ -68,13 +68,18 @@ export default class App extends Component {
 					<Record field="eyeColor" label="Eye Color" />
 				</Page>
 
-				{/* <Page
-					getData={getAllPlanets}
-					getImg={getPlanetsImgUrl}
-					renderItem={({ name, population }) => `${name} (${population})`}
-				/>
-
 				<Page
+					getData={getAllPlanets}
+					getImg={getPlanetImage}
+					getById={getPlanetById}
+					renderItem={({ name, population }) => `${name} (${population})`}
+				>
+					<Record field="diameter" label="Diameter" />
+					<Record field="population" label="Population" />
+					<Record field="rotationPeriod" label="Rotation Period" />
+				</Page>
+
+				{/* <Page
 					getData={getAllStarships}
 					getImg={getStarshipsImgUrl}
 					renderItem={({ name, model }) => (
