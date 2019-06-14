@@ -8,21 +8,21 @@ import './PeoplePage.css';
 
 export default class Page extends Component {
 	state = {
-		selectedPerson: 5,
+		id: 5,
 	};
 
-	onPersonSelected = id => {
-		this.setState({ selectedPerson: id });
+	onItemSelected = id => {
+		this.setState({ id });
 	};
 
 	render() {
-		const { getData, renderItem } = this.props;
+		const { getData, getImg, renderItem } = this.props;
 
-		const itemList = <ItemList onItemSelected={this.onPersonSelected} getData={getData} renderItem={renderItem} />;
+		const itemList = <ItemList onItemSelected={this.onItemSelected} getData={getData} renderItem={renderItem} />;
 
 		const details = (
 			<React.Fragment>
-				<ItemDetails personId={this.state.selectedPerson} />
+				<ItemDetails id={this.state.id} getImg={getImg} />
 				<ErrorButton />
 			</React.Fragment>
 		);

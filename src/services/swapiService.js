@@ -13,6 +13,17 @@ export default class swapiServises {
 		return body;
 	};
 
+	getResourseImg = async url => {
+		const response = await fetch(`${this._imgUrl}${url}`);
+
+		if (!response.ok) {
+			throw new Error(`Could not fetch ${url}, resived ${response.status}`);
+		}
+		const body = await response;
+
+		return body;
+	};
+
 	getAllPeople = async () => {
 		const response = await this.getResourse('/people/');
 		return response.results.map(this._transformPerson);
@@ -44,7 +55,17 @@ export default class swapiServises {
 	};
 
 	getPersonImgUrl = async id => {
-		const response = await this.getResourse(`/characters/${id}.jpg`);
+		const response = await this.getResourseImg(`/characters/${id}.jpg`);
+		return response;
+	};
+
+	getPlanetsImgUrl = async id => {
+		const response = await this.getResourseImg(`/planets/${id}.jpg`);
+		return response;
+	};
+
+	getStarshipsImgUrl = async id => {
+		const response = await this.getResourseImg(`/starships/${id}.jpg`);
 		return response;
 	};
 

@@ -13,7 +13,7 @@ export default class App extends Component {
 
 	state = {
 		showRandomPlanet: true,
-		selectedPerson: 5,
+		// selectedPerson: 5,
 		hasError: false,
 	};
 
@@ -36,7 +36,7 @@ export default class App extends Component {
 
 		const planet = this.state.showRandomPlanet ? <RandomPlanet /> : null;
 
-		const { getAllPeople, getAllPlanets, getAllStarships, getPersonImgUrl } = this.swapi;
+		const { getAllPeople, getAllPlanets, getAllStarships, getPersonImgUrl, getPlanetsImgUrl, getStarshipsImgUrl } = this.swapi;
 
 		return (
 			<div>
@@ -47,7 +47,12 @@ export default class App extends Component {
 				</button>
 				<ErrorButton />
 
-				<Page getData={getAllPeople} renderItem={({ name, birthYear }) => `${name} (${birthYear})`} />
+				<Page
+					// id={this.state.selectedPerson}
+					getData={getAllPeople}
+					getImg={getPersonImgUrl}
+					renderItem={({ name, birthYear }) => `${name} (${birthYear})`}
+				/>
 
 				{/* <div className="row mb2">
 					<div className="col-md-6">

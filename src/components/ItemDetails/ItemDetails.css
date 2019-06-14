@@ -5,3 +5,7 @@
 .item-list .list-group-item:hover {
   background-color: #444;
 }
+
+.person-image {
+  width: 200px;
+}
