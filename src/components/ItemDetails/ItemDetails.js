@@ -51,3 +51,7 @@ export default class ItemDetails extends React.Component {
 		);
 	}
 }
+
+export const Record = ({item, field, label}) => {
+
+}

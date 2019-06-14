@@ -36,7 +36,14 @@ export default class App extends Component {
 
 		const planet = this.state.showRandomPlanet ? <RandomPlanet /> : null;
 
-		const { getAllPeople, getAllPlanets, getAllStarships, getPersonImgUrl, getPlanetsImgUrl, getStarshipsImgUrl } = this.swapi;
+		const {
+			getAllPeople,
+			getAllPlanets,
+			getAllStarships,
+			getPersonImgUrl,
+			getPlanetsImgUrl,
+			getStarshipsImgUrl,
+		} = this.swapi;
 
 		return (
 			<div>
@@ -48,17 +55,26 @@ export default class App extends Component {
 				<ErrorButton />
 
 				<Page
-					// id={this.state.selectedPerson}
 					getData={getAllPeople}
 					getImg={getPersonImgUrl}
 					renderItem={({ name, birthYear }) => `${name} (${birthYear})`}
 				/>
 
 				<Page
-					// id={this.state.selectedPerson}
 					getData={getAllPlanets}
 					getImg={getPlanetsImgUrl}
-					renderItem={({ name, birthYear }) => `${name} (${birthYear})`}
+					renderItem={({ name, population }) => `${name} (${population})`}
+				/>
+
+				<Page
+					getData={getAllStarships}
+					getImg={getStarshipsImgUrl}
+					renderItem={({ name, model }) => (
+						<>
+							<span>{name}</span>
+							<button>{model}</button>
+						</>
+					)}
 				/>
 
 				{/* <div className="row mb2">
