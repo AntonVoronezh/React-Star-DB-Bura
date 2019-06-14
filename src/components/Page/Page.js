@@ -3,7 +3,7 @@ import ItemList from '../ItemList';
 import PersonDetails from '../PersonDetails';
 import ErrorButton from '../ErrorButton';
 import ErrorIndicator from '../ErrorIndicator';
-import swapiService from '../../services/swapiService';
+// import swapiService from '../../services/swapiService';
 import './PeoplePage.css';
 
 const Row = ({ left, right }) => {
@@ -15,8 +15,8 @@ const Row = ({ left, right }) => {
 	);
 };
 
-export default class PeoplePage extends Component {
-	swapi = new swapiService();
+export default class Page extends Component {
+	// swapi = new swapiService();
 
 	state = {
 		selectedPerson: 5,
