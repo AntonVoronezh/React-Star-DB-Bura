@@ -1,12 +1,12 @@
 import React from 'react';
 import './ItemDetails.css';
 
-const PersonDetaiItemDetailslsView = ({ id, name, gender, birthYear, eyeColor }) => {
+const ItemDetails = ({ id, name, gender, birthYear, eyeColor, getImgUrl }) => {
 	return (
 		<div className="person-details card">
 			<img
 				className="person-image"
-				src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`}
+				src={getImgUrl()}
 				alt={name}
 			/>
 
