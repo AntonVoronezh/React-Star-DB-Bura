@@ -14,7 +14,6 @@ export default class App extends Component {
 
 	state = {
 		showRandomPlanet: true,
-		// selectedPerson: 5,
 		hasError: false,
 	};
 
@@ -66,6 +65,7 @@ export default class App extends Component {
 				>
 					<Record field="birthYear" label="Birth Year" />
 					<Record field="eyeColor" label="Eye Color" />
+					<Record field="gender" label="Gender" />
 				</Page>
 
 				<Page
@@ -79,47 +79,25 @@ export default class App extends Component {
 					<Record field="rotationPeriod" label="Rotation Period" />
 				</Page>
 
-				{/* <Page
+				<Page
 					getData={getAllStarships}
-					getImg={getStarshipsImgUrl}
+					getImg={getStarshipImage}
+					getById={getStarshipById}
 					renderItem={({ name, model }) => (
 						<>
 							<span>{name}</span>
 							<button>{model}</button>
 						</>
 					)}
-				/> */}
-
-				{/* <div className="row mb2">
-					<div className="col-md-6">
-						<ItemList onItemSelected={this.onPersonSelected} getData={getAllPlanets}>
-							{({ name, population }) => `${name} [=${population}=]`}
-						</ItemList>
-					</div>
-					<div className="col-md-6">
-						<PersonDetails personId={this.state.selectedPerson} />
-						<ErrorButton />
-					</div>
-				</div> */}
-
-				{/* <div className="row mb2">
-					<div className="col-md-6">
-						<ItemList
-							onItemSelected={this.onPersonSelected}
-							getData={getAllStarships}
-							renderItem={({ name, model }) => (
-								<>
-									<span>{name}</span>
-									<button>{model}</button>
-								</>
-							)}
-						/>
-					</div>
-					<div className="col-md-6">
-						<PersonDetails personId={this.state.selectedPerson} />
-						<ErrorButton />
-					</div>
-				</div> */}
+				>
+					<Record field="model" label="Model" />
+					<Record field="manufacturer" label="Manufacturer" />
+					<Record field="length" label="Length" />
+					<Record field="costInCredits" label="Cost" />
+					<Record field="crew" label="Crew" />
+					<Record field="passengers" label="Passengers" />
+					<Record field="cargoCapacity" label="Cargo Capacity" />
+				</Page>
 			</div>
 		);
 	}
