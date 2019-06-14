@@ -1,22 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component } from './node_modules/react';
 import ItemList from '../ItemList';
 import PersonDetails from '../PersonDetails';
 import ErrorButton from '../ErrorButton';
 import ErrorIndicator from '../ErrorIndicator';
-// import swapiService from '../../services/swapiService';
+import Row from '../Row';
 import './PeoplePage.css';
 
-const Row = ({ left, right }) => {
-	return (
-		<div className="row mb2">
-			<div className="col-md-6">{left}</div>
-			<div className="col-md-6">{right}</div>
-		</div>
-	);
-};
-
 export default class Page extends Component {
-	// swapi = new swapiService();
 
 	state = {
 		selectedPerson: 5,
