@@ -5,6 +5,7 @@ import Page from '../Page';
 import ErrorButton from '../ErrorButton';
 import ErrorIndicator from '../ErrorIndicator';
 import swapiService from '../../services/swapiService';
+import { Record } from '../ItemDetails/ItemDetails';
 
 import './App.css';
 
@@ -43,6 +44,9 @@ export default class App extends Component {
 			getPersonImgUrl,
 			getPlanetsImgUrl,
 			getStarshipsImgUrl,
+			getPersonById,
+			getStarshipById,
+			getPlanetById
 		} = this.swapi;
 
 		return (
@@ -57,8 +61,12 @@ export default class App extends Component {
 				<Page
 					getData={getAllPeople}
 					getImg={getPersonImgUrl}
+					getById={getPersonById}
 					renderItem={({ name, birthYear }) => `${name} (${birthYear})`}
-				/>
+				>
+					<Record field="birthYear" label="Birth Year" />
+					<Record field="birthYear" label="Birth Year" />
+				</Page>
 
 				<Page
 					getData={getAllPlanets}

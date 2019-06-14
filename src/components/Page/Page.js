@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ItemList from '../ItemList';
-import ItemDetails, { Record } from '../ItemDetails';
+import ItemDetails from '../ItemDetails';
 import ErrorButton from '../ErrorButton';
 import ErrorBoundary from '../ErrorBoundary';
 import Row from '../Row';
@@ -16,13 +16,12 @@ export default class Page extends Component {
 	};
 
 	render() {
-		const { getData, getImg, renderItem } = this.props;
+		const { getData, getImg, renderItem, getById } = this.props;
 
 		const itemList = <ItemList onItemSelected={this.onItemSelected} getData={getData} renderItem={renderItem} />;
-		console.log(this.state.id);
 		const details = (
 			<React.Fragment>
-				<ItemDetails id={this.state.id} getImg={getImg} />
+				<ItemDetails id={this.state.id} getImg={getImg} getById={getById} children={this.props.children}/>
 				<ErrorButton />
 			</React.Fragment>
 		);
