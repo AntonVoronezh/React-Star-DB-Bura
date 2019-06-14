@@ -6,6 +6,15 @@ import ErrorIndicator from '../ErrorIndicator';
 import swapiService from '../../services/swapiService';
 import './PeoplePage.css';
 
+const Row = ({left, right}) => {
+	return (
+		<div className="row mb2">
+			<div className="col-md-6">{left}</div>
+			<div className="col-md-6">{right}</div>
+		</div>
+	);
+};
+
 export default class PeoplePage extends Component {
 	swapi = new swapiService();
 
@@ -28,29 +37,22 @@ export default class PeoplePage extends Component {
 			return <ErrorIndicator />;
 		}
 
-		return (
-			<div className="row mb2">
-				<div className="col-md-6">
-					<ItemList
-						onItemSelected={this.onPersonSelected}
-						getData={this.swapi.getAllPeople}
-						renderItem={({ name, birthYear }) => `${name} (${birthYear})`}
-					/>
-				</div>
-				<div className="col-md-6">
-					<PersonDetails personId={this.state.selectedPerson} />
-					<ErrorButton />
-				</div>
-			</div>
+		const itemList = (
+			<ItemList
+				onItemSelected={this.onPersonSelected}
+				getData={this.swapi.getAllPeople}
+				renderItem={({ name, birthYear }) => `${name} (${birthYear})`}
+			/>
 		);
+
+		const persDet = (
+			<>
+				<PersonDetails personId={this.state.selectedPerson} />
+				 <ErrorButton />
+			 </>
+		);
+
+		return <Row left={itemList} right={persDet} />;
 	}
 }
 
-const Row = (left, right) => {
-	return (
-		<div className="row mb2">
-			<div className="col-md-6">{left}</div>
-			<div className="col-md-6">{right}</div>
-		</div>
-	);
-};

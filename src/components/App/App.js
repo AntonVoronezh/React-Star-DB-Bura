@@ -50,11 +50,9 @@ export default class App extends Component {
 
 				<div className="row mb2">
 					<div className="col-md-6">
-						<ItemList
-							onItemSelected={this.onPersonSelected}
-							getData={this.swapi.getAllPlanets}
-							renderItem={({ name, population }) => `${name} [=${population}=]`}
-						/>
+						<ItemList onItemSelected={this.onPersonSelected} getData={this.swapi.getAllPlanets}>
+							{({ name, population }) => `${name} [=${population}=]`}
+						</ItemList>
 					</div>
 					<div className="col-md-6">
 						<PersonDetails personId={this.state.selectedPerson} />
