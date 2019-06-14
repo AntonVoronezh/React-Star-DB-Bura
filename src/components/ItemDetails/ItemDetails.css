@@ -9,3 +9,7 @@
 .person-image {
   width: 200px;
 }
+
+.list-group-item span {
+  margin-right: 10px;
+}

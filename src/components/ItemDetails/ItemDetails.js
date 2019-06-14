@@ -4,45 +4,49 @@ import './ItemDetails.css';
 export default class ItemDetails extends React.Component {
 	state = {
 		imgUrl: null,
-		data: null,
+		item: null,
 	};
 
 	componentDidMount() {
-		const { getImg, id, getById } = this.props;
-
-		getImg(id).then(({ url }) => {
-			this.setState({ imgUrl: url });
-		});
-
-		// getById(id).then(res => {
-		// 	this.setState({ data: { name:'ggggg'} });
-		// });
+		this.updateItem();
 	}
 
-	componentDidUpdate() {
-		const { getImg, id } = this.props;
+	componentDidUpdate(prevProps) {
+		if (this.props.id !== prevProps.id) {
+			this.updateItem();
+		}
+	}
 
-		getImg(id).then(({ url }) => {
-			this.setState({ imgUrl: url });
+	updateItem() {
+		const { getImg, id, getById } = this.props;
+
+		if (!id) {
+			return;
+		}
+
+		getById(id).then(item => {
+			this.setState({
+				item,
+				imgUrl: getImg(id),
+			});
 		});
 	}
 
 	render() {
-		let name = null;
+		const { item, imgUrl } = this.state;
 
-		// if (this.state.data) {
-		// 	let { name } = this.state.data;
-		// }
-
+		if (!item) {
+			return <span>Select a item from a list</span>;
+		}
 		return (
 			<div className="person-details card">
-				{/* <img className="person-image" src={this.state.imgUrl} alt={name} /> */}
+				<img className="person-image" src={imgUrl} alt="item" />
 
 				<div className="card-body">
-					{/* <h4>{name}</h4> */}
+					<h4>{item.name}</h4>
 					<ul className="list-group list-group-flush">
-						{React.Children.map(this.props.children, (i, idx) => {
-							return <li>{idx}</li>;
+						{React.Children.map(this.props.children, child => {
+							return React.cloneElement(child, { item });
 						})}
 					</ul>
 				</div>
@@ -55,7 +59,7 @@ export const Record = ({ item, field, label }) => {
 	return (
 		<li className="list-group-item">
 			<span className="term">{label}</span>
-			{/* <span>{item[field]}</span> */}
+			<span>{item[field]}</span>
 		</li>
 	);
 };

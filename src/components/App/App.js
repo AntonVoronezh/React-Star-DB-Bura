@@ -41,9 +41,9 @@ export default class App extends Component {
 			getAllPeople,
 			getAllPlanets,
 			getAllStarships,
-			getPersonImgUrl,
-			getPlanetsImgUrl,
-			getStarshipsImgUrl,
+			getPersonImage,
+			getPlanetImage,
+			getStarshipImage,
 			getPersonById,
 			getStarshipById,
 			getPlanetById
@@ -60,15 +60,15 @@ export default class App extends Component {
 
 				<Page
 					getData={getAllPeople}
-					getImg={getPersonImgUrl}
+					getImg={getPersonImage}
 					getById={getPersonById}
 					renderItem={({ name, birthYear }) => `${name} (${birthYear})`}
 				>
 					<Record field="birthYear" label="Birth Year" />
-					<Record field="birthYear" label="Birth Year" />
+					<Record field="eyeColor" label="Eye Color" />
 				</Page>
 
-				<Page
+				{/* <Page
 					getData={getAllPlanets}
 					getImg={getPlanetsImgUrl}
 					renderItem={({ name, population }) => `${name} (${population})`}
@@ -83,7 +83,7 @@ export default class App extends Component {
 							<button>{model}</button>
 						</>
 					)}
-				/>
+				/> */}
 
 				{/* <div className="row mb2">
 					<div className="col-md-6">

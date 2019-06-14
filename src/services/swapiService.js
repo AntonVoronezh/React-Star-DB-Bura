@@ -1,6 +1,6 @@
 export default class swapiServises {
 	_baseUrl = 'https://swapi.co/api';
-	_imgUrl = 'https://starwars-visualguide.com/assets/img';
+	_imageBase = 'https://starwars-visualguide.com/assets/img';
 
 	getResourse = async url => {
 		const response = await fetch(`${this._baseUrl}${url}`);
@@ -9,17 +9,6 @@ export default class swapiServises {
 			throw new Error(`Could not fetch ${url}, resived ${response.status}`);
 		}
 		const body = await response.json();
-
-		return body;
-	};
-
-	getResourseImg = async url => {
-		const response = await fetch(`${this._imgUrl}${url}`);
-
-		if (!response.ok) {
-			throw new Error(`Could not fetch ${url}, resived ${response.status}`);
-		}
-		const body = await response;
 
 		return body;
 	};
@@ -54,19 +43,16 @@ export default class swapiServises {
 		return this._transformPlanet(response);
 	};
 
-	getPersonImgUrl = async id => {
-		const response = await this.getResourseImg(`/characters/${id}.jpg`);
-		return response;
+	getPersonImage = id => {
+		return `${this._imageBase}/characters/${id}.jpg`;
 	};
 
-	getPlanetsImgUrl = async id => {
-		const response = await this.getResourseImg(`/planets/${id}.jpg`);
-		return response;
+	getStarshipImage = id => {
+		return `${this._imageBase}/starships/${id}.jpg`;
 	};
 
-	getStarshipsImgUrl = async id => {
-		const response = await this.getResourseImg(`/starships/${id}.jpg`);
-		return response;
+	getPlanetImage = id => {
+		return `${this._imageBase}/planets/${id}.jpg`;
 	};
 
 	_extractId(url) {
