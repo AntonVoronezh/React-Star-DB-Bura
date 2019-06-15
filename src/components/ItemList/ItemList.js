@@ -2,59 +2,40 @@ import React, { Component } from 'react';
 import Spinner from '../Spinner';
 import './ItemList.css';
 
-class ItemList extends Component {
-	// state = {
-	// 	itemList: null,
-	// };
-
-	// componentDidMount() {
-	// 	const { getData } = this.props;
-
-	// 	getData().then(itemList => {
-	// 		this.setState({ itemList });
-	// 	});
-	// }
-
-	renderItems(arr) {
+const ItemList = props => {
+	const renderItems = arr => {
 		return arr.map(item => {
 			const { id } = item;
 
 			let label;
 
-			if (this.props.children) {
-				label = this.props.children(item);
+			if (props.children) {
+				label = props.children(item);
 			} else {
-				label = this.props.renderItem(item);
+				label = props.renderItem(item);
 			}
 			return (
-				<li key={id} className="list-group-item" onClick={() => this.props.onItemSelected(id)}>
+				<li key={id} className="list-group-item" onClick={() => props.onItemSelected(id)}>
 					{label}
 				</li>
 			);
 		});
-	}
+	};
 
-	render() {
-		// const { itemList } = this.state;
-		// if (!itemList) {
-		// 	return <Spinner />;
-		// }
+	const items = renderItems(props.data);
 
-		const items = this.renderItems(this.props.data);
-
-		return <ul className="item-list list-group">{items}</ul>;
-	}
-}
+	return <ul className="item-list list-group">{items}</ul>;
+};
 
 const f = () => {
 	return class extends Component {
 		state = {
 			data: null,
 		};
-	
+
 		componentDidMount() {
 			const { getData } = this.props;
-	
+
 			getData().then(data => {
 				this.setState({ data });
 			});
@@ -66,7 +47,7 @@ const f = () => {
 				return <Spinner />;
 			}
 
-			return <ItemList {...this.props} data={data}/>;
+			return <ItemList {...this.props} data={data} />;
 		}
 	};
 };
