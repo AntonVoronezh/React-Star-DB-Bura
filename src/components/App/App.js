@@ -6,6 +6,7 @@ import ErrorIndicator from '../ErrorIndicator';
 import { PeoplePage, PlanetsPage, StarshipsPage } from '../Pages';
 import { SwapiProvider } from '../../services/swapiContext';
 import swapiServises from '../../services/swapiService';
+import DummySwapiService from '../../services/DummySwapiService';
 import './App.css';
 
 export default class App extends Component {
