@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Page from '../Page';
 import swapiService from '../../services/swapiService';
 import { Record } from '../ItemDetails/ItemDetails';
