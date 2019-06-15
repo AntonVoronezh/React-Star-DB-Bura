@@ -2,25 +2,44 @@ import React from 'react';
 import Page from '../Page';
 import { SwapiConsumer } from '../../services/swapiContext';
 import { Record } from '../ItemDetails/ItemDetails';
+import { withService } from '../../hoc/withData';
 
-const PeoplePage = () => {
+const People = ({ SwapiService }) => {
+	const { getAllPeople, getPersonImage, getPersonById } = SwapiService;
 	return (
-		<SwapiConsumer>
-			{({ getAllPeople, getPersonImage, getPersonById }) => (
-				<Page
-					getData={getAllPeople}
-					getImg={getPersonImage}
-					getById={getPersonById}
-					renderItem={({ name, birthYear }) => `${name} (${birthYear})`}
-				>
-					<Record field="birthYear" label="Birth Year" />
-					<Record field="eyeColor" label="Eye Color" />
-					<Record field="gender" label="Gender" />
-				</Page>
-			)}
-		</SwapiConsumer>
+		<Page
+			getData={getAllPeople}
+			getImg={getPersonImage}
+			getById={getPersonById}
+			renderItem={({ name, birthYear }) => `${name} (${birthYear})`}
+		>
+			<Record field="birthYear" label="Birth Year" />
+			<Record field="eyeColor" label="Eye Color" />
+			<Record field="gender" label="Gender" />
+		</Page>
 	);
 };
+
+const PeoplePage = withService(People);
+
+// const PeoplePage = () => {
+// 	return (
+// 		<SwapiConsumer>
+// 			{({ getAllPeople, getPersonImage, getPersonById }) => (
+// 				<Page
+// 					getData={getAllPeople}
+// 					getImg={getPersonImage}
+// 					getById={getPersonById}
+// 					renderItem={({ name, birthYear }) => `${name} (${birthYear})`}
+// 				>
+// 					<Record field="birthYear" label="Birth Year" />
+// 					<Record field="eyeColor" label="Eye Color" />
+// 					<Record field="gender" label="Gender" />
+// 				</Page>
+// 			)}
+// 		</SwapiConsumer>
+// 	);
+// };
 
 const PlanetsPage = () => {
 	return (
