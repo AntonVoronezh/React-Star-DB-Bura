@@ -1,29 +1,10 @@
-import React, { Component } from 'react';
-import Spinner from '../../components/Spinner';
+import React from 'react';
 
-const withData = Wrapper => {
-	return class extends Component {
-		state = {
-			data: null,
-		};
 
-		componentDidMount() {
-			const { getData } = this.props;
-
-			getData().then(data => {
-				this.setState({ data });
-			});
-		}
-
-		render() {
-			const { data } = this.state;
-			if (!data) {
-				return <Spinner />;
-			}
-
-			return <Wrapper {...this.props} data={data} />;
-		}
-	};
+const withService = Wrapped => {
+	return props => (
+		<Wrapped {...props}/>
+	)
 };
 
-export default withData;
+export default withService;

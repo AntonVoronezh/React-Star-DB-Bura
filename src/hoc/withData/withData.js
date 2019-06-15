@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Spinner from '../../components/Spinner';
 
-const withData = Wrapper => {
+const withData = Wrapped => {
 	return class extends Component {
 		state = {
 			data: null,
@@ -21,7 +21,7 @@ const withData = Wrapper => {
 				return <Spinner />;
 			}
 
-			return <Wrapper {...this.props} data={data} />;
+			return <Wrapped {...this.props} data={data} />;
 		}
 	};
 };

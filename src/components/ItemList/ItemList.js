@@ -1,5 +1,5 @@
 import React from 'react';
-import withData from '../../hoc/withData';
+import { withData } from '../../hoc/withData';
 import './ItemList.css';
 
 const ItemList = props => {
