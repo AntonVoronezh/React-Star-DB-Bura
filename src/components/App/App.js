@@ -58,7 +58,7 @@ export default class App extends Component {
 				<ErrorButton />
 
 				
-				<StarshipsPage />
+			
 
 
 				<PeoplePage />
@@ -86,7 +86,9 @@ export default class App extends Component {
 					<Record field="rotationPeriod" label="Rotation Period" />
 				</Page> */}
 
-				<Page
+<StarshipsPage />
+
+				{/* <Page
 					getData={getAllStarships}
 					getImg={getStarshipImage}
 					getById={getStarshipById}
@@ -104,7 +106,7 @@ export default class App extends Component {
 					<Record field="crew" label="Crew" />
 					<Record field="passengers" label="Passengers" />
 					<Record field="cargoCapacity" label="Cargo Capacity" />
-				</Page>
+				</Page> */}
 			</div>
 		);
 	}

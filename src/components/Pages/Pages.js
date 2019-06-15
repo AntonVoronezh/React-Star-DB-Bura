@@ -45,7 +45,27 @@ const PlanetsPage = () => {
 	);
 };
 const StarshipsPage = () => {
-	return <h1>StarshipsPage</h1>;
+	return (
+		<Page
+			getData={getAllStarships}
+			getImg={getStarshipImage}
+			getById={getStarshipById}
+			renderItem={({ name, model }) => (
+				<>
+					<span>{name}</span>
+					<button>{model}</button>
+				</>
+			)}
+		>
+			<Record field="model" label="Model" />
+			<Record field="manufacturer" label="Manufacturer" />
+			<Record field="length" label="Length" />
+			<Record field="costInCredits" label="Cost" />
+			<Record field="crew" label="Crew" />
+			<Record field="passengers" label="Passengers" />
+			<Record field="cargoCapacity" label="Cargo Capacity" />
+		</Page>
+	);
 };
 
 export { PeoplePage, PlanetsPage, StarshipsPage };
