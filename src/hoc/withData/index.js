@@ -1,3 +1,4 @@
 import withData from './withData';
+import withService from './withService';
 
-export default withData;
+export { withData, withService };
