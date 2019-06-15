@@ -31,7 +31,7 @@ export default class RandomPlanet extends Component {
 	};
 
 	updatePlanet = () => {
-		const randomNum = Math.ceil(Math.random() * 20) +1 ;
+		const randomNum = Math.ceil(Math.random() * 18) +1 ;
 
 		this.swapi
 			.getPlanetById(randomNum)

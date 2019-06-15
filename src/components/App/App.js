@@ -57,6 +57,11 @@ export default class App extends Component {
 				</button>
 				<ErrorButton />
 
+{/* <PeoplePage />
+<PlanetsPage />
+<StarshipsPage /> */}
+
+
 				<Page
 					getData={getAllPeople}
 					getImg={getPersonImage}
