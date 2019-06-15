@@ -3,17 +3,17 @@ import Spinner from '../Spinner';
 import './ItemList.css';
 
 class ItemList extends Component {
-	state = {
-		itemList: null,
-	};
+	// state = {
+	// 	itemList: null,
+	// };
 
-	componentDidMount() {
-		const { getData } = this.props;
+	// componentDidMount() {
+	// 	const { getData } = this.props;
 
-		getData().then(itemList => {
-			this.setState({ itemList });
-		});
-	}
+	// 	getData().then(itemList => {
+	// 		this.setState({ itemList });
+	// 	});
+	// }
 
 	renderItems(arr) {
 		return arr.map(item => {
@@ -35,12 +35,12 @@ class ItemList extends Component {
 	}
 
 	render() {
-		const { itemList } = this.state;
-		if (!itemList) {
-			return <Spinner />;
-		}
+		// const { itemList } = this.state;
+		// if (!itemList) {
+		// 	return <Spinner />;
+		// }
 
-		const items = this.renderItems(itemList);
+		const items = this.renderItems(this.props.data);
 
 		return <ul className="item-list list-group">{items}</ul>;
 	}
@@ -48,13 +48,25 @@ class ItemList extends Component {
 
 const f = () => {
 	return class extends Component {
+		state = {
+			data: null,
+		};
+	
 		componentDidMount() {
-			console.log('f', this.props);
-			
+			const { getData } = this.props;
+	
+			getData().then(data => {
+				this.setState({ data });
+			});
 		}
 
 		render() {
-			return <ItemList {...this.props}/>;
+			const { data } = this.state;
+			if (!data) {
+				return <Spinner />;
+			}
+
+			return <ItemList {...this.props} data={data}/>;
 		}
 	};
 };
