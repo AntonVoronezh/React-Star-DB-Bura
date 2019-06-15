@@ -27,7 +27,7 @@ const ItemList = props => {
 	return <ul className="item-list list-group">{items}</ul>;
 };
 
-const f = () => {
+const withData = Wrapper => {
 	return class extends Component {
 		state = {
 			data: null,
@@ -47,12 +47,12 @@ const f = () => {
 				return <Spinner />;
 			}
 
-			return <ItemList {...this.props} data={data} />;
+			return <Wrapper {...this.props} data={data} />;
 		}
 	};
 };
 
-export default f();
+export default withData(ItemList);
 
 // -----------------------------------
 // const f = () => {
