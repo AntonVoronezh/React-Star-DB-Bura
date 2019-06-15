@@ -57,11 +57,12 @@ export default class App extends Component {
 				</button>
 				<ErrorButton />
 
-				<PeoplePage />
 				<PlanetsPage />
 				<StarshipsPage />
 
-				<Page
+				
+				<PeoplePage />
+				{/* <Page
 					getData={getAllPeople}
 					getImg={getPersonImage}
 					getById={getPersonById}
@@ -70,7 +71,7 @@ export default class App extends Component {
 					<Record field="birthYear" label="Birth Year" />
 					<Record field="eyeColor" label="Eye Color" />
 					<Record field="gender" label="Gender" />
-				</Page>
+				</Page> */}
 
 				<Page
 					getData={getAllPlanets}
