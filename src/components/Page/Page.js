@@ -4,7 +4,7 @@ import ItemDetails from '../ItemDetails';
 import ErrorButton from '../ErrorButton';
 import ErrorBoundary from '../ErrorBoundary';
 import Row from '../Row';
-import './PeoplePage.css';
+import './Page.css';
 
 export default class Page extends Component {
 	state = {
