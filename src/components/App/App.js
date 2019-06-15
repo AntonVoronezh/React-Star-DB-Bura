@@ -6,7 +6,7 @@ import ErrorButton from '../ErrorButton';
 import ErrorIndicator from '../ErrorIndicator';
 import swapiService from '../../services/swapiService';
 import { Record } from '../ItemDetails/ItemDetails';
-
+import { PeoplePage, PlanetsPage, StarshipsPage } from '../Pages';
 import './App.css';
 
 export default class App extends Component {
@@ -57,10 +57,9 @@ export default class App extends Component {
 				</button>
 				<ErrorButton />
 
-{/* <PeoplePage />
-<PlanetsPage />
-<StarshipsPage /> */}
-
+				<PeoplePage />
+				<PlanetsPage />
+				<StarshipsPage />
 
 				<Page
 					getData={getAllPeople}

@@ -1,3 +1,3 @@
-import Page from './Pages';
+import { PeoplePage, PlanetsPage, StarshipsPage } from './Pages';
 
-export default Page;
+export { PeoplePage, PlanetsPage, StarshipsPage };
