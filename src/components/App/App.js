@@ -4,10 +4,11 @@ import RandomPlanet from '../RandomPlanet';
 import ErrorButton from '../ErrorButton';
 import ErrorIndicator from '../ErrorIndicator';
 import { PeoplePage, PlanetsPage, StarshipsPage } from '../Pages';
+import { SwapiProvider } from '../../services/swapiContext';
+import swapiServises from '../../services/swapiService';
 import './App.css';
 
 export default class App extends Component {
-
 	state = {
 		showRandomPlanet: true,
 		hasError: false,
@@ -33,7 +34,7 @@ export default class App extends Component {
 		const planet = this.state.showRandomPlanet ? <RandomPlanet /> : null;
 
 		return (
-			<div>
+			<SwapiProvider value={new swapiServises()}>
 				<Header />
 				{planet}
 				<button className="toggle-planet btn btn-warning btn-lg" onClick={this.toggleRandomPlanet}>
@@ -46,7 +47,7 @@ export default class App extends Component {
 				<PlanetsPage />
 
 				<StarshipsPage />
-			</div>
+			</SwapiProvider>
 		);
 	}
 }
