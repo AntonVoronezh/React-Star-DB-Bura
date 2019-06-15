@@ -15,29 +15,34 @@ const {
 	getPlanetById,
 } = new swapiService();
 
-
 const PeoplePage = () => {
 	return (
 		<Page
-					getData={getAllPeople}
-					getImg={getPersonImage}
-					getById={getPersonById}
-					renderItem={({ name, birthYear }) => `${name} (${birthYear})`}
-				>
-					<Record field="birthYear" label="Birth Year" />
-					<Record field="eyeColor" label="Eye Color" />
-					<Record field="gender" label="Gender" />
-				</Page>
+			getData={getAllPeople}
+			getImg={getPersonImage}
+			getById={getPersonById}
+			renderItem={({ name, birthYear }) => `${name} (${birthYear})`}
+		>
+			<Record field="birthYear" label="Birth Year" />
+			<Record field="eyeColor" label="Eye Color" />
+			<Record field="gender" label="Gender" />
+		</Page>
 	);
 };
 
-
-
-
-
-
 const PlanetsPage = () => {
-	return <h1>PlanetsPage</h1>;
+	return (
+		<Page
+			getData={getAllPlanets}
+			getImg={getPlanetImage}
+			getById={getPlanetById}
+			renderItem={({ name, population }) => `${name} (${population})`}
+		>
+			<Record field="diameter" label="Diameter" />
+			<Record field="population" label="Population" />
+			<Record field="rotationPeriod" label="Rotation Period" />
+		</Page>
+	);
 };
 const StarshipsPage = () => {
 	return <h1>StarshipsPage</h1>;
