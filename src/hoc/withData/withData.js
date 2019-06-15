@@ -1,104 +1,29 @@
 import React, { Component } from 'react';
-import Header from '../Header';
-import RandomPlanet from '../RandomPlanet';
-import Page from '../Page';
-import ErrorButton from '../ErrorButton';
-import ErrorIndicator from '../ErrorIndicator';
-import swapiService from '../../services/swapiService';
-import { Record } from '../ItemDetails/ItemDetails';
+import Spinner from '../../components/Spinner';
 
-import './App.css';
+const withData = Wrapper => {
+	return class extends Component {
+		state = {
+			data: null,
+		};
 
-export default class App extends Component {
-	swapi = new swapiService();
+		componentDidMount() {
+			const { getData } = this.props;
 
-	state = {
-		showRandomPlanet: true,
-		hasError: false,
-	};
-
-	componentDidCatch() {
-		this.setState({ hasError: true });
-	}
-
-	toggleRandomPlanet = () => {
-		this.setState(state => {
-			return {
-				showRandomPlanet: !state.showRandomPlanet,
-			};
-		});
-	};
-
-	render() {
-		if (this.state.hasError) {
-			return <ErrorIndicator />;
+			getData().then(data => {
+				this.setState({ data });
+			});
 		}
 
-		const planet = this.state.showRandomPlanet ? <RandomPlanet /> : null;
+		render() {
+			const { data } = this.state;
+			if (!data) {
+				return <Spinner />;
+			}
 
-		const {
-			getAllPeople,
-			getAllPlanets,
-			getAllStarships,
-			getPersonImage,
-			getPlanetImage,
-			getStarshipImage,
-			getPersonById,
-			getStarshipById,
-			getPlanetById,
-		} = this.swapi;
+			return <Wrapper {...this.props} data={data} />;
+		}
+	};
+};
 
-		return (
-			<div>
-				<Header />
-				{planet}
-				<button className="toggle-planet btn btn-warning btn-lg" onClick={this.toggleRandomPlanet}>
-					Toggle Random Planet
-				</button>
-				<ErrorButton />
-
-				<Page
-					getData={getAllPeople}
-					getImg={getPersonImage}
-					getById={getPersonById}
-					renderItem={({ name, birthYear }) => `${name} (${birthYear})`}
-				>
-					<Record field="birthYear" label="Birth Year" />
-					<Record field="eyeColor" label="Eye Color" />
-					<Record field="gender" label="Gender" />
-				</Page>
-
-				<Page
-					getData={getAllPlanets}
-					getImg={getPlanetImage}
-					getById={getPlanetById}
-					renderItem={({ name, population }) => `${name} (${population})`}
-				>
-					<Record field="diameter" label="Diameter" />
-					<Record field="population" label="Population" />
-					<Record field="rotationPeriod" label="Rotation Period" />
-				</Page>
-
-				<Page
-					getData={getAllStarships}
-					getImg={getStarshipImage}
-					getById={getStarshipById}
-					renderItem={({ name, model }) => (
-						<>
-							<span>{name}</span>
-							<button>{model}</button>
-						</>
-					)}
-				>
-					<Record field="model" label="Model" />
-					<Record field="manufacturer" label="Manufacturer" />
-					<Record field="length" label="Length" />
-					<Record field="costInCredits" label="Cost" />
-					<Record field="crew" label="Crew" />
-					<Record field="passengers" label="Passengers" />
-					<Record field="cargoCapacity" label="Cargo Capacity" />
-				</Page>
-			</div>
-		);
-	}
-}
+export default withData;
