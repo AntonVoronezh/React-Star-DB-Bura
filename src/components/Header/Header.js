@@ -6,19 +6,19 @@ const Header = props => {
   return (
     <div className="header d-flex">
       <h3>
-        <a href="#">
+        <a href="http">
           Star DB
         </a>
       </h3>
       <ul className="d-flex">
         <li>
-          <a href="#">People</a>
+          <a href="http">People</a>
         </li>
         <li>
-          <a href="#">Planets</a>
+          <a href="http">Planets</a>
         </li>
         <li>
-          <a href="#">Starships</a>
+          <a href="http">Starships</a>
         </li>
       </ul>
       <button className="btn btn-sm btn-primary" onClick={props.onChangeHandler}>Change Service</button>
