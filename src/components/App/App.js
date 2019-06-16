@@ -13,6 +13,7 @@ export default class App extends Component {
 	state = {
 		showRandomPlanet: true,
 		hasError: false,
+		swapiService: new DummySwapiService(),
 	};
 
 	componentDidCatch() {
@@ -40,7 +41,7 @@ export default class App extends Component {
 		const planet = this.state.showRandomPlanet ? <RandomPlanet /> : null;
 
 		return (
-			<SwapiProvider value={new swapiServises()}>
+			<SwapiProvider value={this.state.swapiService}>
 				<Header onChangeHandler={this.onChangeHandler}/>
 				{planet}
 				<button className="toggle-planet btn btn-warning btn-lg" onClick={this.toggleRandomPlanet}>
