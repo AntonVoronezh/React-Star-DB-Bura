@@ -27,6 +27,11 @@ export default class App extends Component {
 		});
 	};
 
+	onChangeHandler = () => {
+		console.log('onChangeHandler');
+		
+	}
+
 	render() {
 		if (this.state.hasError) {
 			return <ErrorIndicator />;
@@ -36,7 +41,7 @@ export default class App extends Component {
 
 		return (
 			<SwapiProvider value={new swapiServises()}>
-				<Header />
+				<Header onChangeHandler={this.onChangeHandler}/>
 				{planet}
 				<button className="toggle-planet btn btn-warning btn-lg" onClick={this.toggleRandomPlanet}>
 					Toggle Random Planet
