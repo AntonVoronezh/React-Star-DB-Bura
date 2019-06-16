@@ -8,7 +8,7 @@ const withData = Wrapped => {
 		};
 
 		componentDidMount() {
-			
+			this.update();
 		}
 
 		update() {
