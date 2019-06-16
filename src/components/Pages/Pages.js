@@ -20,6 +20,14 @@ const People = ({ SwapiService }) => {
 	);
 };
 
+const mapMethodsToProps = SwapiService => {
+	return {
+		getData: SwapiService.getAllPeople,
+		getImg: SwapiService.getPersonImage,
+		getById: SwapiService.getPersonById
+	}
+}
+
 const PeoplePage = withService(People);
 
 // const PeoplePage = () => {

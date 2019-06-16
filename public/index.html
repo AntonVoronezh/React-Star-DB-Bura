@@ -9,8 +9,38 @@
 
 <body>
   <div id="root"></div>
+  <script>
+    // 1
+    function f() {
+      a = 9
+    }
+    f();
+    console.log('1', a);
+
+    // 2
+    const a2 = [];
+    a2[0] = 8;
+    a2[10] = 8;
+    console.log('2', a2);
+
+    // 3
+    const a3 = {
+      a: 4,
+    }
+    console.log('3', a3);
+
+    // 4
+    // console - объект браузера
+
+    // 5
+    // NaN == NaN -> false -> isNaN()
+    var test11 = 0 / 0;
+
+    console.log(typeof test11);
+
+  </script>
+
+
 </body>
 
 </html>
-
-
