@@ -4,15 +4,9 @@ import { SwapiConsumer } from '../../services/swapiContext';
 import { Record } from '../ItemDetails/ItemDetails';
 import { withService } from '../../hoc/withData';
 
-const People = ({ SwapiService }) => {
-	const { getAllPeople, getPersonImage, getPersonById } = SwapiService;
+const People = props => {
 	return (
-		<Page
-			getData={getAllPeople}
-			getImg={getPersonImage}
-			getById={getPersonById}
-			renderItem={({ name, birthYear }) => `${name} (${birthYear})`}
-		>
+		<Page {...props} renderItem={({ name, birthYear }) => `${name} (${birthYear})`}>
 			<Record field="birthYear" label="Birth Year" />
 			<Record field="eyeColor" label="Eye Color" />
 			<Record field="gender" label="Gender" />
@@ -24,11 +18,11 @@ const mapMethodsToProps = SwapiService => {
 	return {
 		getData: SwapiService.getAllPeople,
 		getImg: SwapiService.getPersonImage,
-		getById: SwapiService.getPersonById
-	}
-}
+		getById: SwapiService.getPersonById,
+	};
+};
 
-const PeoplePage = withService(People);
+const PeoplePage = withService(People, mapMethodsToProps);
 
 // const PeoplePage = () => {
 // 	return (
