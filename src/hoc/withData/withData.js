@@ -8,6 +8,10 @@ const withData = Wrapped => {
 		};
 
 		componentDidMount() {
+			
+		}
+
+		update() {
 			const { getData } = this.props;
 
 			getData().then(data => {
