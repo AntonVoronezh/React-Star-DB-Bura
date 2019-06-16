@@ -11,6 +11,12 @@ const withData = Wrapped => {
 			this.update();
 		}
 
+		componentDidUpdate(prevProps) {
+			if (this.props.id !== prevProps.id || this.props.getData !== prevProps.getData) {
+				this.update();
+			}
+		}
+
 		update() {
 			const { getData } = this.props;
 
