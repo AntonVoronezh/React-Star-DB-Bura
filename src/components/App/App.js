@@ -5,7 +5,7 @@ import ErrorButton from '../ErrorButton';
 import ErrorIndicator from '../ErrorIndicator';
 import { PeoplePage, PlanetsPage, StarshipsPage } from '../Pages';
 import { SwapiProvider } from '../../services/swapiContext';
-import swapiServises from '../../services/swapiService';
+import SwapiServises from '../../services/swapiService';
 import DummySwapiService from '../../services/DummySwapiService';
 import './App.css';
 
@@ -29,9 +29,14 @@ export default class App extends Component {
 	};
 
 	onChangeHandler = () => {
-		console.log('onChangeHandler');
-		
-	}
+		this.setState(({ swapiService }) => {
+			const Service = swapiService instanceof SwapiServises ? DummySwapiService : SwapiServises;
+			console.log(Service.name);
+			return {
+				swapiService: new Service(),
+			};
+		});
+	};
 
 	render() {
 		if (this.state.hasError) {
@@ -42,7 +47,7 @@ export default class App extends Component {
 
 		return (
 			<SwapiProvider value={this.state.swapiService}>
-				<Header onChangeHandler={this.onChangeHandler}/>
+				<Header onChangeHandler={this.onChangeHandler} />
 				{planet}
 				<button className="toggle-planet btn btn-warning btn-lg" onClick={this.toggleRandomPlanet}>
 					Toggle Random Planet
