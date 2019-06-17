@@ -58,7 +58,7 @@ export default class App extends Component {
 
 					<Route path="/people" component={PeoplePage}/>
 					<Route path="/planets" component={PlanetsPage}/>
-					<Route path="/starship" component={StarshipsPage}/>
+					<Route path="/starships" component={StarshipsPage}/>
 					
 				</BrowserRouter>
 			</SwapiProvider>
