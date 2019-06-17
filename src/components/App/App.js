@@ -43,7 +43,7 @@ export default class App extends Component {
 
 	onLogin = () => {
 		this.setState({ isLoggedIn: true });
-	}
+	};
 
 	render() {
 		if (this.state.hasError) {
@@ -67,7 +67,10 @@ export default class App extends Component {
 					{/* <Route path="/people/:id" render={({match}) => <ItemDetails id={match.params.id}/>}  /> */}
 					<Route path="/planets" component={PlanetsPage} />
 					<Route path="/starships" component={StarshipsPage} />
-					<Route path="/login" render={() => <Login onLogin={this.onLogin} />} />
+					<Route
+						path="/login"
+						render={() => <Login onLogin={this.onLogin} isLoggedIn={this.state.isLoggedIn} />}
+					/>
 					<Route path="/secret" render={() => <Secret isLoggedIn={this.state.isLoggedIn} />} />
 				</BrowserRouter>
 			</SwapiProvider>
