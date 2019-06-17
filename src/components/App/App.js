@@ -56,10 +56,10 @@ export default class App extends Component {
 					</button>
 					<ErrorButton />
 
-					<Route path="/people" component={PeoplePage}/>
-					<Route path="/planets" component={PlanetsPage}/>
-					<Route path="/starships" component={StarshipsPage}/>
-					
+					<Route path="/" exact render={() => <h2>Welcome to StarDB</h2>} />
+					<Route path="/people" component={PeoplePage} />
+					<Route path="/planets" component={PlanetsPage} />
+					<Route path="/starships" component={StarshipsPage} />
 				</BrowserRouter>
 			</SwapiProvider>
 		);
