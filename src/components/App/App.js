@@ -8,6 +8,7 @@ import { PeoplePage, PlanetsPage, StarshipsPage } from '../Pages';
 import { SwapiProvider } from '../../services/swapiContext';
 import SwapiServises from '../../services/swapiService';
 import DummySwapiService from '../../services/DummySwapiService';
+import ItemDetails from '../ItemDetails'
 import './App.css';
 
 export default class App extends Component {
@@ -57,9 +58,11 @@ export default class App extends Component {
 					<ErrorButton />
 
 					<Route path="/" exact render={() => <h2>Welcome to StarDB</h2>} />
-					<Route path="/people" component={PeoplePage} />
+					<Route path="/people" exact component={PeoplePage} />
+					{/* <Route path="/people/:id" render={({match}) => <ItemDetails id={match.params.id}/>}  /> */}
 					<Route path="/planets" component={PlanetsPage} />
 					<Route path="/starships" component={StarshipsPage} />
+					
 				</BrowserRouter>
 			</SwapiProvider>
 		);
