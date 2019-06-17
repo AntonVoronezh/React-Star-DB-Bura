@@ -41,6 +41,10 @@ export default class App extends Component {
 		});
 	};
 
+	onLogin = () => {
+		this.setState({ isLoggedIn: true });
+	}
+
 	render() {
 		if (this.state.hasError) {
 			return <ErrorIndicator />;
@@ -63,8 +67,8 @@ export default class App extends Component {
 					{/* <Route path="/people/:id" render={({match}) => <ItemDetails id={match.params.id}/>}  /> */}
 					<Route path="/planets" component={PlanetsPage} />
 					<Route path="/starships" component={StarshipsPage} />
-					<Route path="/login" render={()=> <Login onLogin={this.onLogin}/>} />
-					<Route path="/secret" component={Secret} />
+					<Route path="/login" render={() => <Login onLogin={this.onLogin} />} />
+					<Route path="/secret" render={() => <Secret isLoggedIn={this.state.isLoggedIn} />} />
 				</BrowserRouter>
 			</SwapiProvider>
 		);
