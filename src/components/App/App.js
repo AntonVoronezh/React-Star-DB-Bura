@@ -48,18 +48,20 @@ export default class App extends Component {
 
 		return (
 			<SwapiProvider value={this.state.swapiService}>
-				<Header onChangeHandler={this.onChangeHandler} />
-				{planet}
-				<button className="toggle-planet btn btn-warning btn-lg" onClick={this.toggleRandomPlanet}>
-					Toggle Random Planet
-				</button>
-				<ErrorButton />
+				<BrowserRouter>
+					<Header onChangeHandler={this.onChangeHandler} />
+					{planet}
+					<button className="toggle-planet btn btn-warning btn-lg" onClick={this.toggleRandomPlanet}>
+						Toggle Random Planet
+					</button>
+					<ErrorButton />
 
-				<PeoplePage />
+					<PeoplePage />
 
-				<PlanetsPage />
+					<PlanetsPage />
 
-				<StarshipsPage />
+					<StarshipsPage />
+				</BrowserRouter>
 			</SwapiProvider>
 		);
 	}
