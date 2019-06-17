@@ -56,11 +56,10 @@ export default class App extends Component {
 					</button>
 					<ErrorButton />
 
-					<PeoplePage />
-
-					<PlanetsPage />
-
-					<StarshipsPage />
+					<Route path="/people" component={PeoplePage}/>
+					<Route path="/planets" component={PlanetsPage}/>
+					<Route path="/starship" component={StarshipsPage}/>
+					
 				</BrowserRouter>
 			</SwapiProvider>
 		);
