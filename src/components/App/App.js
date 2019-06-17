@@ -16,6 +16,7 @@ export default class App extends Component {
 		showRandomPlanet: true,
 		hasError: false,
 		swapiService: new DummySwapiService(),
+		isLoggedIn: false,
 	};
 
 	componentDidCatch() {
@@ -62,7 +63,7 @@ export default class App extends Component {
 					{/* <Route path="/people/:id" render={({match}) => <ItemDetails id={match.params.id}/>}  /> */}
 					<Route path="/planets" component={PlanetsPage} />
 					<Route path="/starships" component={StarshipsPage} />
-					<Route path="/login" component={Login} />
+					<Route path="/login" render={()=> <Login onLogin={this.onLogin}/>} />
 					<Route path="/secret" component={Secret} />
 				</BrowserRouter>
 			</SwapiProvider>
