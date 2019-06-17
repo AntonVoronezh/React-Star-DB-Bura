@@ -1,9 +1,14 @@
 import React from 'react';
 
-const Login = () => {
-	return (
-		<div>
-			<button> LogIn</button>
-		</div>
-	);
+const Secret = ({ isLoggedIn }) => {
+	if (isLoggedIn){
+        return (
+            <div className="jumbotron text-center">
+                All secrets!!!
+            </div>
+        )
+	}
+	return <p>notttttt</p>;
 };
+
+export default Secret;
