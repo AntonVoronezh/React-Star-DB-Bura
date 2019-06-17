@@ -8,7 +8,7 @@ import { PeoplePage, PlanetsPage, StarshipsPage } from '../Pages';
 import { SwapiProvider } from '../../services/swapiContext';
 import SwapiServises from '../../services/swapiService';
 import DummySwapiService from '../../services/DummySwapiService';
-import ItemDetails from '../ItemDetails'
+import { Login, Secret } from '../Pages';
 import './App.css';
 
 export default class App extends Component {
@@ -62,7 +62,8 @@ export default class App extends Component {
 					{/* <Route path="/people/:id" render={({match}) => <ItemDetails id={match.params.id}/>}  /> */}
 					<Route path="/planets" component={PlanetsPage} />
 					<Route path="/starships" component={StarshipsPage} />
-					
+					<Route path="/login" component={Login} />
+					<Route path="/secret" component={Secret} />
 				</BrowserRouter>
 			</SwapiProvider>
 		);

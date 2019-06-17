@@ -3,8 +3,7 @@ import Page from '../Page';
 import { SwapiConsumer } from '../../services/swapiContext';
 import { Record } from '../ItemDetails/ItemDetails';
 import { withService } from '../../hoc/withData';
-import Secret from './secret';
-import Login from './login';
+
 
 const People = props => {
 	return (
@@ -91,4 +90,4 @@ const StarshipsPage = () => {
 	);
 };
 
-export { PeoplePage, PlanetsPage, StarshipsPage, Secret, Login };
+export { PeoplePage, PlanetsPage, StarshipsPage};
