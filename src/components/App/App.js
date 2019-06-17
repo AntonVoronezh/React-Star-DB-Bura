@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, BrowserRouter } from 'react-router-dom';
+import { Route, BrowserRouter, Switch } from 'react-router-dom';
 import Header from '../Header';
 import RandomPlanet from '../RandomPlanet';
 import ErrorButton from '../ErrorButton';
@@ -61,17 +61,20 @@ export default class App extends Component {
 						Toggle Random Planet
 					</button>
 					<ErrorButton />
+					<Switch>
+						<Route path="/" exact render={() => <h2>Welcome to StarDB</h2>} />
+						<Route path="/people" exact component={PeoplePage} />
+						{/* <Route path="/people/:id" render={({match}) => <ItemDetails id={match.params.id}/>}  /> */}
+						<Route path="/planets" component={PlanetsPage} />
+						<Route path="/starships" component={StarshipsPage} />
+						<Route
+							path="/login"
+							render={() => <Login onLogin={this.onLogin} isLoggedIn={this.state.isLoggedIn} />}
+						/>
+						<Route path="/secret" render={() => <Secret isLoggedIn={this.state.isLoggedIn} />} />
 
-					<Route path="/" exact render={() => <h2>Welcome to StarDB</h2>} />
-					<Route path="/people" exact component={PeoplePage} />
-					{/* <Route path="/people/:id" render={({match}) => <ItemDetails id={match.params.id}/>}  /> */}
-					<Route path="/planets" component={PlanetsPage} />
-					<Route path="/starships" component={StarshipsPage} />
-					<Route
-						path="/login"
-						render={() => <Login onLogin={this.onLogin} isLoggedIn={this.state.isLoggedIn} />}
-					/>
-					<Route path="/secret" render={() => <Secret isLoggedIn={this.state.isLoggedIn} />} />
+						<Route render={() => <h2>Page not found</h2>} />
+					</Switch>
 				</BrowserRouter>
 			</SwapiProvider>
 		);
